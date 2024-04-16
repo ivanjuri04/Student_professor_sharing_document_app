@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popis Djeljenih Dokumenata</title>
+</head>
+<body>
+    <h1>Popis Djeljenih Dokumenata</h1>
+    <ul>
+        {% for student_dokument in student_dokumenti %}
+            <li>
+                Dokument: {{ student_dokument.dokument.naslov }}<br>
+                Student: {{ student_dokument.student.username }}<br>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="student_dokument_id" value="{{ student_dokument.id }}">
+                    <button type="submit">Poništi Dijeljenje</button>
+                </form>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <form method="get">
+        <label for="sort_by">Sort by:</label>
+        <select name="sort_by" id="sort_by">
+            <option value="username" {% if sort_by == 'username' %}selected{% endif %}>Username</option>
+            <option value="student" {% if sort_by == 'student' %}selected{% endif %}>Student</option>
+            <option value="profesor" {% if sort_by == 'profesor' %}selected{% endif %}>Profesor</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+    <h1>User List</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }} - {{ user.role }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Users</title>
+</head>
+<body>
+    <h1>Edit Users</h1>
+    
+    {% for user in users %}
+        <a href="?edit_user_id={{ user.id }}">Edit {{ user.username }}</a><br>
+    {% endfor %}
+    
+    <hr>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ selected_user.id }}">
+        
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <p>Username</p>{{ form.username }}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+            </div>
+            <p>Email</p>{{ form.email }}
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="roleSelect">Role:</label>
+            </div>
+            <select class="form-control" id="roleSelect" name="role">
+                <option value="profesor" {% if form.role.value == 'profesor' %} selected {% endif %}>Profesor</option>
+                <option value="student" {% if form.role.value == 'student' %} selected {% endif %}>Student</option>
+            
+            </select>
+        </div>
+        <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit">Save</button>
+        </div>
+    </form>
+	<a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+    
+</body>
+</html>

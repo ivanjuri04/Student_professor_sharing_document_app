@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stvaranje Dokumenta</title>
+</head>
+<body>
+    <h1>Stvaranje Dokumenta</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="naslov">Naslov:</label><br>
+        <input type="text" id="naslov" name="naslov" required><br><br>
+        
+        <label for="putanja">Putanja do dokumenta:</label><br>
+        <input type="file" id="putanja" name="putanja" accept=".pdf,.doc,.docx" required><br><br>
+        
+        <button type="submit">Stvori Dokument</button>
+        <span><a href="{%url 'domaa' %}"> Back</a></span>
+
+    </form>
+</body>
+</html>
+

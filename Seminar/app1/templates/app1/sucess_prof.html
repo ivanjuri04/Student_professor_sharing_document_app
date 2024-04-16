@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prof_HP</title>
+</head>
+<body>
+    
+    <h2>Dobrodosao, {{ user.username }}!</h2>
+    <h2>Ti si {{user.role}}</h2>
+  
+
+    <span><a href="{%url 'logout' %}"> LOGOUT</a></span>
+    <span><a href="{%url 'prof_create_document' %}"> Kreiraj dokument</a></span>
+    <span><a href="{%url 'prof_view_document' %}"> Pogledaj dokumente</a></span>
+    <span><a href="{%url 'prof_delete_document' %}"> Brisi dokumente</a></span>
+    <span><a href="{%url 'prof_share_document' %}"> dijeli dokumente</a></span>
+    <span><a href="{%url 'prof_share_document_list' %}"> ponisti djeljenje </a></span>
+    
+
+    
+    
+</body>
+</html>

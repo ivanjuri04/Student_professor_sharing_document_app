@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin_HP</title>
+</head>
+<body>
+    
+    <h2>Dobrodosao, {{ user.username }}!</h2>
+    <h2>Ti si {{user.role}}</h2>
+<span><a href="{%url 'logout' %}"> LOGOUT</a></span>
+<span><a href="{%url 'reg' %}"> REGISTRATION</a></span>
+<span><a href="{%url 'admin_users' %}"> Korisnici</a></span>
+<span><a href="{%url 'admin_users_delete' %}"> Brisi</a></span>
+<span><a href="{%url 'admin_users_edit' %}"> Uredi</a></span>
+
+
+
+
+
+    
+</body>
+</html>

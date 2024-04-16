@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% if form %}
+            
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <p>username</p>{{ form.username }}
+                    {{ selected_user.id }}
+                    
+                    
+                    
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                    </div>
+                    <p>email</p>{{ form.email }}
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="roleSelect">Role:</label>
+                    </div>
+                    <select class="form-control" id="roleSelect" name="role">
+                        
+                        <option value="profesor" {% if form.role.value == 'profesor' %} selected {% endif %}>Profesor</option>
+                        <option value="student" {% if form.role.value == 'student' %} selected {% endif %}>Student</option>
+                        <!-- Add other roles as needed -->
+                    </select>
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <button type="submit">save</button>
+                </div>
+                
+        </form>
+        {% endif %}
+    
+</body>
+</html>

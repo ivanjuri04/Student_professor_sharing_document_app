@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moji Dijeljeni Dokumenti</title>
+</head>
+<body>
+    <h1>Moji Dijeljeni Dokumenti</h1>
+    <p>Sortiraj prema:
+        <a href="?sortiranje=naslov">Naslov</a> |
+        <a href="?sortiranje=vrijeme_kreiranja">Vrijeme Kreiranja</a> |
+        
+    </p>
+  
+ 
+    <form method="post">
+            {% csrf_token %}
+            <label for="user">Select professor to view shared documents:</label>
+            <select name="kreator_id" id="dokument">
+                <option value="" selected>Select professor</option>
+                
+                {% for prof in professors1 %}
+                    
+                    <option value="{{ prof.id }}">{{ prof.username }}</option>
+                    
+                {% endfor %}
+               
+            </select>
+            <button type="submit">Show Shared Documents</button>
+    </form>
+    
+        
+    {% if selected_prof %}
+    <h2>Shared Documents by Professor {{ selected_prof.username }}</h2>
+    <ul>
+        {% for student_dokument in student_dokumenti %}
+        {% if student_dokument.dokument.kreator.id == selected_prof.id %}
+            <li>
+                Dokument: {{ student_dokument.dokument.naslov }}<br>
+                Kreator: {{ student_dokument.dokument.kreator.username }}<br>
+                Vrijeme: {{ student_dokument.dokument.vrijeme_kreiranja }}<br>
+                <hr>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+        {% endif %}
+
+        
+        <p>--------------------------------------------------------------------------------------------------------------------------------------</p>
+    <ul>
+    <h2>All Documents</h2>
+    
+        {% for student_dokument in student_dokumenti %}
+            <li>
+                Dokument: {{ student_dokument.dokument.naslov }}<br>
+                Kreator: {{ student_dokument.dokument.kreator.username }}<br>
+                Vrijeme: {{ student_dokument.dokument.vrijeme_kreiranja }}<br>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+</body>
+</html>

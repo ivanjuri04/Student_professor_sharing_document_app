@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dijeljenje Dokumenata</title>
+</head>
+<body>
+    <h1>Dijeljenje Dokumenata</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="dokument_id">Odaberi dokument:</label>
+        <select id="dokument_id" name="dokument_id">
+            {% for dokument in dokumenti %}
+                <option value="{{ dokument.id }}">{{ dokument.naslov }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="studenti">Odaberi studente za dijeljenje:</label><br>
+        {% for student in studenti %}
+            <input type="checkbox" name="studenti" value="{{ student.id }}"> {{ student.username }}<br>
+        {% endfor %}
+        <button type="submit">Dijeli Dokument</button>
+    </form>
+    <a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+</body>
+</html>

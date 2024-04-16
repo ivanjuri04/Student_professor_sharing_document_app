@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Potvrda Brisanja Dokumenta</title>
+</head>
+<body>
+    <h1>Potvrda Brisanja Dokumenta</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="user">Select document to delete:</label>
+        <select name="dokument_id" id="dokument">
+            <option value="" selected>Select document</option>
+        
+            {% for dokument in dokumenti %}
+                <option value="{{ dokument.id }}">{{ dokument.naslov }}</option>
+             
+            {% endfor %}
+        </select>
+        <button type="submit">Delete</button>
+    <a href="{% url 'domaa' %}">Povratak na popis dokumenata</a>
+</body>
+</html>

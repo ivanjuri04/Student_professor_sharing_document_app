@@ -1,0 +1,21 @@
+
+
+
+{%block title%}
+
+{%endblock%}
+
+{%block content%}
+{{user}}
+<a href="{%url 'nov' %}">stisni me </a>
+<h1>Homepage</h1>
+<p>Dobrodosao {{request.user}}</p>
+<span><a href="{%url 'logout' %}"> LOGOUT</a></span>
+<span><a href="{%url 'reg' %}"> REGISTRATION</a></span>
+
+
+{% for message in messages%}
+
+				<p id="messages">{{message}}</p>
+				{%endfor%}
+{% endblock %}

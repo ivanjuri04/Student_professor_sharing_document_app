@@ -1,0 +1,13 @@
+
+{%if user.is_authenticated%}
+	<p>Autentificiran si</p>
+{%endif%}
+
+
+{% for message in messages%}
+
+				<p id="messages">{{message}}</p>
+				{%endfor%}
+				<span><a href="{%url 'doma' %}"> BACK</a></span>				
+
+

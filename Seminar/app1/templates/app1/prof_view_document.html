@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prikaz Dokumenata</title>
+</head>
+<body>
+    <h1>Prikaz Dokumenata</h1>
+    <p>Sortiraj prema:
+        <a href="?sortiranje=naslov">Naslov</a> |
+        <a href="?sortiranje=vrijeme_kreiranja">Vrijeme Kreiranja</a> |
+       
+    </p>
+    <ul>
+    <ul>
+        {% for dokument in dokumenti %}
+            <li>
+                Naslov: {{ dokument.naslov }}<br>
+                Vrijeme kreiranja: {{ dokument.vrijeme_kreiranja }}<br>
+                Kreator : {{ dokument.kreator }}<br>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'domaa' %}" class="ml-2">BACK</a>
+</body>
+</html>
